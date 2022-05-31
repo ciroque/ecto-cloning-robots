@@ -4,6 +4,8 @@ defmodule Robot.Robots do
   alias Robot.Robot
   alias Elixir.Robot.Repo, as: Repo
 
+  import Ecto.Query, warn: false
+
   def create(attrs \\ %{}) do
     %Robot{}
     |> Robot.changeset(attrs)
@@ -11,4 +13,26 @@ defmodule Robot.Robots do
   end
 
   def delete(robot), do: Repo.delete(robot)
+
+  def load(id) do
+    robots()
+    |> id(id)
+    |> with_full_preload
+    |> Repo.one()
+  end
+
+  defp id(query, id) do
+    where(query, [r], r.id == ^id)
+  end
+
+  defp with_full_preload(query) do
+    from(
+      workout in query,
+      preload: [arms: ^[hands: [:fingers]]]
+    )
+  end
+
+  defp robots do
+    from(robot in Elixir.Robot.Robot)
+  end
 end

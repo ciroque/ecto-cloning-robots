@@ -8,6 +8,8 @@ defmodule Robot.Robot do
   schema "robots" do
     field :name, :string
 
+    has_many :arms, Robot.Arm
+
     timestamps()
   end
 
