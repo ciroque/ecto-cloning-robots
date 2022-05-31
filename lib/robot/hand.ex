@@ -16,7 +16,7 @@ defmodule Robot.Hand do
 
   def changeset(hand, attrs) do
     hand
-    |> cast(attrs, [:name])
-    |>validate_required([:name])
+    |> cast(attrs, [:name, :arm_id])
+    |> validate_required([:name, :arm_id])
   end
 end

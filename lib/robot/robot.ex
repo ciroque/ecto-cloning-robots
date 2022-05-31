@@ -5,6 +5,9 @@ defmodule Robot.Robot do
 
   import Ecto.Changeset
 
+  @required_fields [:name]
+  @cast_fields @required_fields
+
   schema "robots" do
     field :name, :string
 
@@ -15,7 +18,7 @@ defmodule Robot.Robot do
 
   def changeset(robot, attrs) do
     robot
-    |> cast(attrs, [:name])
-    |>validate_required([:name])
+    |> cast(attrs, @cast_fields)
+    |> validate_required(@required_fields)
   end
 end

@@ -16,7 +16,7 @@ defmodule Robot.Arm do
 
   def changeset(arm, attrs) do
     arm
-    |> cast(attrs, [:name])
-    |>validate_required([:name])
+    |> cast(attrs, [:name, :robot_id])
+    |> validate_required([:name, :robot_id])
   end
 end
