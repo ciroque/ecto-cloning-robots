@@ -11,7 +11,7 @@ defmodule Robot.Robots do
     %{arms: arms} = original = load(id)
 
     {:ok, %{id: cloned_id}} = original
-    |> Map.from_struct()
+    |> Elixir.Robot.Utils.prepare_for_cloning()
     |> create()
 
     clone_arms(arms, cloned_id)
