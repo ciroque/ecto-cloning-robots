@@ -6,6 +6,10 @@ defmodule Robot.Robots do
 
   import Ecto.Query, warn: false
 
+  def clone(_robot) do
+    {:error, :not_yet_implemented}
+  end
+
   def create(attrs \\ %{}) do
     %Robot{}
     |> Robot.changeset(attrs)

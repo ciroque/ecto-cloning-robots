@@ -1,21 +1,23 @@
 # Robot
 
-**TODO: Add description**
+Sandbox application to experiment with cloning Ecto models with a hierarchy.
 
-## Installation
+## Setting it up
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `robot` to your list of dependencies in `mix.exs`:
+```bash
+git clone git@github.com:ciroque/ecto-cloning-robots.git
 
-```elixir
-def deps do
-  [
-    {:robot, "~> 0.1.0"}
-  ]
-end
+cd ecto-cloning-robots
+
+mix deps.get
+mix ecto.setup
+
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/robot>.
+```elixir
+iex(1)> robot = Robot.Robots.load(1)
 
+iex(1)> cloned = Robot.Robots.clone(robot)
+
+```
