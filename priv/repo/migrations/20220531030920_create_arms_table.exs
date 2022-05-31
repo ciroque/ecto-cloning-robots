@@ -5,7 +5,7 @@ defmodule Robot.Repo.Migrations.CreateArmsTable do
     create table(:arms) do
       add :name, :string
 
-      add :robot_id, references(:robot)
+      add :robot_id, references(:robots)
 
       timestamps()
     end
